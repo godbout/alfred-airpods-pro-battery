@@ -1,36 +1,25 @@
-# AirpodsBattery ![](Images/logo.png)
-An Alfred workflow to display the battery info of your connected Airpods.
+<h1 align="center">Alfred AirPods Pro Battery</h1>
 
-![Scrennshot 1](Images/1.jpg)
-![Scrennshot 2](Images/2.jpg)
-![Scrennshot 3](Images/3.jpg)
+<p align="center">
+<a href="https://github.com/godbout/AirpodsBattery/releases/latest"><img src="https://img.shields.io/github/release/godbout/AirpodsBattery.svg?style=flat" alt="GitHub Release"></a>
+<a href="https://github.com/godbout/AirpodsBattery/releases"><img src="https://img.shields.io/github/downloads/godbout/AirpodsBattery/total.svg?style=flat" alt="GitHub Downloads"></a>
+</p>
 
-This is a workflow used to display the battery of connected Airpods with the state of connection.
+---
 
-If the Bluetooth Manager workflow [Bluetooth Manager workflow](https://github.com/bmunoz89/alfred-wf-bluetooth-manager)
-is installed, after selecting your Airpods as your default device through Bluetooth Manager, you can connect and disconnect your Airpods using Bluetooth Manager through this workflow conveniently.
+# WHAT IS THAT
 
-## Requirements
+It's another **SHAMELESS** fork from this time [AirpodsBattery](https://github.com/BeneathCloud/AirpodsBattery). The original Workflow doesn't work with my AirPods Pro and/or macOS Cataline. Opened an issue before testing a PR but no answer. So here we go.
 
-1. Alfred Powerpack
-2. (optional but recommned) [Bluetooth Manager workflow](https://github.com/bmunoz89/alfred-wf-bluetooth-manager)
+# MANDATORY SCREENSHOTS
 
-## Install
+![battery](https://raw.githubusercontent.com/godbout/AirpodsBattery/master/resources/screenshots/airpodspro-battery.gif "battery")
 
-Download the newest released file in [Releases](https://github.com/BeneathCloud/AirpodsBattery/releases), unzip and double click to intall.
+# DOWNLOAD
 
-## Usage
+Latest release available on the [release page](https://github.com/godbout/AirpodsBattery/releases).
 
-1. keyword `bb` to display connection status and battery of your Airpods.
-2. After `bb`, you can press <kbd>Enter</kbd> to trigger Bluetooth Manager workflow to manage your Airpods.
+# CREDITS
 
-## Notes
+[BeneathCloud](https://github.com/BeneathCloud) for the original Workflow.
 
-1. Highly recommended to install Bluetooth Manager workflow to enable features of connecting and disconnecting Airpods.
-
-2. At present, this workflow can only work when you have only one pair of Airpods.
-
-## Credits
-
-1. Icons: [Flaticon](https://www.flaticon.com/)
-2. The script based on: [AirPodsBatteryCLI](https://github.com/duk242/AirPodsBatteryCLI)
