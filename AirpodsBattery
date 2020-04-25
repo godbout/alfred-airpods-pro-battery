@@ -1,10 +1,3 @@
-# query=$1
-
-#!/bin/bash
-# AirPods Battery CLI, Version 2.3
-# Contributors: duk242, ankushg, spetykowski, danozdotnet
-# Released under the MIT License.
-
 OUTPUT='🎧'; BLUETOOTH_DEFAULTS=$(defaults read /Library/Preferences/com.apple.Bluetooth); SYSTEM_PROFILER=$(system_profiler SPBluetoothDataType 2>/dev/null)
 MAC_ADDR=$(grep -b2 "Minor Type: Headphones"<<<"${SYSTEM_PROFILER}"|awk '/Address/{print $3}')
 CONNECTED=$(grep -ia6 "${MAC_ADDR}"<<<"${SYSTEM_PROFILER}"|awk '/Connected: Yes/{print 1}')
@@ -16,17 +9,10 @@ if [[ "${CONNECTED}" ]]; then
     declare -x "${I}"="$(awk -v pat="${I}" '$0~pat{gsub (";",""); print $3 }'<<<"${BLUETOOTH_DATA}")"
     [[ ! -z "${!I}" ]] && OUTPUT="${OUTPUT} $(awk '/BatteryPercent/{print substr($0,15,1)": "}'<<<"${I}")${!I}%"
   done
-# Modified by Laz
   printf -v res "%s\\n" "${OUTPUT}"
 else
-# Modified by Laz
   printf -v res "%s Not Connected\\n" "${OUTPUT}"
 fi
-
-
-# AirpodsBattery Alfred workflow
-# Author: Laz (lasviceju@gmail.com)
-# License: MIT
 
 battery=$(echo $res | awk '{if ($2 ~ "n|Not") print "Not Connected"; else print " L: " $5 " R: " $7}')
 if [[ $battery == "Not Connected" ]]; then
