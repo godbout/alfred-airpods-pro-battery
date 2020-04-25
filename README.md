@@ -21,5 +21,5 @@ Latest release available on the [release page](https://github.com/godbout/Airpod
 
 # CREDITS
 
-[BeneathCloud](https://github.com/BeneathCloud) for the original Workflow.
+[Laz](https://github.com/BeneathCloud) for the original Workflow.
 
