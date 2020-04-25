@@ -28,23 +28,23 @@ fi
 # Author: Laz (lasviceju@gmail.com)
 # License: MIT
 
-battery=$(echo $res | awk '{if ($2 ~ "n|Not") print "Not Connected"; else print "L: " $7, "R: " $10}')
+battery=$(echo $res | awk '{if ($2 ~ "n|Not") print "Not Connected"; else print " L: " $5 " R: " $7}')
 if [[ $battery == "Not Connected" ]]; then
-	arg=0;
-	subtitle="Press Enter to connect";
+    arg=0;
+    subtitle="Press enter to connect";
 else
-	arg=1;
-	subtitle="Press Enter to disconnect";
+    arg=1;
+    subtitle="Press enter to disconnect";
 fi
 
 cat << EOB
 {"items": [
 
-	{
-		"uid": "battery",
-		"title": "$battery",
-		"subtitle": "$subtitle",
-		"arg": "$arg",
-	}
+    {
+        "uid": "battery",
+        "title": "$battery",
+        "subtitle": "$subtitle",
+        "arg": "$arg",
+    }
 ]}
 EOB
