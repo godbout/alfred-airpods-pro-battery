@@ -9,7 +9,7 @@
 
 # WHAT IS THAT
 
-It's another **SHAMELESS** fork from this time [AirpodsBattery](https://github.com/BeneathCloud/AirpodsBattery). The original Workflow doesn't work with my AirPods Pro and/or macOS Cataline. Opened an issue before testing a PR but no answer. So here we go.
+It's another **SHAMELESS** fork from this time [AirpodsBattery](https://github.com/BeneathCloud/AirpodsBattery). The original Workflow doesn't work with my AirPods Pro and/or macOS Catalina. Opened an issue before testing a PR but no answer. So here we go.
 
 # MANDATORY SCREENSHOTS
 
