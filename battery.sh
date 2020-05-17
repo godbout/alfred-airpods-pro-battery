@@ -7,8 +7,8 @@ BATTERY_LEVELS=("BatteryPercentCase" "BatteryPercentLeft" "BatteryPercentRight")
 
 if [[ "${CONNECTED}" ]]; then
   for i in "${BATTERY_LEVELS[@]}"; do
-    declare -x "${i}"="$(awk -v pattern="${i}" '$0~pattern{gsub (";",""); print $3}' <<< "${BLUETOOTH_DATA}")"
-    [[ ! -z "${!i}" ]] && OUTPUT="${OUTPUT} $(awk '/BatteryPercent/{print substr($0,15,1)": "}' <<< "${i}")${!i}%"
+    declare -x "${i}"="$(awk -v pattern="${i}" '$0 ~ pattern {gsub(";", ""); print $3}' <<< "${BLUETOOTH_DATA}")"
+    [[ ! -z "${!i}" ]] && OUTPUT="${OUTPUT} $(awk '/BatteryPercent/{print substr($0, 15, 1)": "}' <<< "${i}")${!i}%"
   done
   printf -v res "%s" "${OUTPUT}"
 else
