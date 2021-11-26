@@ -9,17 +9,16 @@
 
 # WHAT IS THAT
 
-It's another **SHAMELESS** fork from this time [AirpodsBattery](https://github.com/BeneathCloud/AirpodsBattery). The original Workflow doesn't work with my AirPods Pro and/or macOS Catalina. Opened an issue before testing a PR but no answer. So here we go.
+it's a **SHAMELESS** fork from [AirpodsBattery](https://github.com/BeneathCloud/AirpodsBattery). the original Workflow didn't work for me. opened an issue before testing a PR but no answer. so here we go. also now updated for Monterey.
 
-# MANDATORY SCREENSHOTS
+# MANDATORY SCREENSHOT
 
-![battery](https://raw.githubusercontent.com/godbout/AirpodsBattery/master/resources/screenshots/airpodspro-battery.gif "battery")
+![battery](https://raw.githubusercontent.com/godbout/AirpodsBattery/media/alfred-airpodspro-battery.gif "battery")
 
 # DOWNLOAD
 
-Latest release available on the [release page](https://github.com/godbout/AirpodsBattery/releases).
+latest release available on the [release page](https://github.com/godbout/AirpodsBattery/releases).
 
 # CREDITS
 
 [Laz](https://github.com/BeneathCloud) for the original Workflow.
-
