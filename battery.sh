@@ -1,30 +1,15 @@
-BLUETOOTH_DEFAULTS=$(defaults read /Library/Preferences/com.apple.Bluetooth)
 SYSTEM_PROFILER=$(system_profiler SPBluetoothDataType 2>/dev/null)
-MAC_ADDRESS=$(grep -B2 "Minor Type: Headphones" <<< "${SYSTEM_PROFILER}" | awk '/Address/{print $2}')
+MAC_ADDRESS=$(grep -B8 "Minor Type: Headphones" <<< "${SYSTEM_PROFILER}" | awk '/Address/{print $2}')
 CONNECTED=$(grep -A6 "${MAC_ADDRESS}" <<< "${SYSTEM_PROFILER}" | awk '/Connected: Yes/{print 1}')
-BLUETOOTH_DATA=$(grep -iA6 '"'"${MAC_ADDRESS}"'"' <<< "${BLUETOOTH_DEFAULTS}")
-BATTERY_LEVELS=("BatteryPercentCase" "BatteryPercentLeft" "BatteryPercentRight")
 
 if [[ "${CONNECTED}" ]]; then
-  for i in "${BATTERY_LEVELS[@]}"; do
-    declare -x "${i}"="$(awk -v pattern="${i}" '$0 ~ pattern {gsub(";", ""); print $3}' <<< "${BLUETOOTH_DATA}")"
-    [[ ! -z "${!i}" ]] && OUTPUT="${OUTPUT} $(awk '/BatteryPercent/{print substr($0, 15, 1)": "}' <<< "${i}")${!i}%"
-  done
-  printf -v res "%s" "${OUTPUT}"
+  CASE_BATTERY_LEVEL=$(grep -A6 "${MAC_ADDRESS}" <<< "${SYSTEM_PROFILER}" | awk '/Case Battery Level/{print $4}')
+  LEFT_BATTERY_LEVEL=$(grep -A6 "${MAC_ADDRESS}" <<< "${SYSTEM_PROFILER}" | awk '/Left Battery Level/{print $4}')
+  RIGHT_BATTERY_LEVEL=$(grep -A6 "${MAC_ADDRESS}" <<< "${SYSTEM_PROFILER}" | awk '/Right Battery Level/{print $4}')
+  battery="L: ${LEFT_BATTERY_LEVEL} R: ${RIGHT_BATTERY_LEVEL} C: ${CASE_BATTERY_LEVEL}"
 else
-  printf -v res "Not Connected"
+  battery="Not Connected"
 fi
-
-battery=$(echo $res | awk '
-  {
-    if ($2 ~ "n|Not")
-      print "Not Connected";
-    else if ($2 == "0%")
-      print " L: " $4 " R: " $6;
-    else
-      print " L: " $4 " R: " $6 " (C: "$2 ")";
-  }
-')
 
 cat << EOB
 {"items": [
