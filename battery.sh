@@ -8,7 +8,7 @@ if [[ "${CONNECTED}" ]]; then
   RIGHT_BATTERY_LEVEL=$(grep -A6 "${MAC_ADDRESS}" <<< "${SYSTEM_PROFILER}" | awk '/Right Battery Level/{print $4}')
   battery="L: ${LEFT_BATTERY_LEVEL} R: ${RIGHT_BATTERY_LEVEL} C: ${CASE_BATTERY_LEVEL}"
 else
-  battery="Not Connected"
+  battery="not connected"
 fi
 
 cat << EOB
