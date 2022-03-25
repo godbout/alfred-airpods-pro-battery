@@ -1,5 +1,5 @@
 SYSTEM_PROFILER=$(system_profiler SPBluetoothDataType 2>/dev/null)
-MAC_ADDRESS=$(grep -B8 "Minor Type: Headphones" <<< "${SYSTEM_PROFILER}" | awk '/Address/{print $2}')
+MAC_ADDRESS=$(grep -B8 "Minor Type: Headphones" <<< "${SYSTEM_PROFILER}" | awk '/Address/{ lastline = $2 } END { print lastline }')
 CONNECTED=$(grep -A10 "${MAC_ADDRESS}" <<< "${SYSTEM_PROFILER}" | awk '/Services:/{print 1}')
 
 if [[ "${CONNECTED}" ]]; then
