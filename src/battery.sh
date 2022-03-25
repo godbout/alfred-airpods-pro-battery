@@ -1,6 +1,6 @@
 SYSTEM_PROFILER=$(system_profiler SPBluetoothDataType 2>/dev/null)
 MAC_ADDRESS=$(grep -B8 "Minor Type: Headphones" <<< "${SYSTEM_PROFILER}" | awk '/Address/{print $2}')
-CONNECTED=$(grep -A6 "${MAC_ADDRESS}" <<< "${SYSTEM_PROFILER}" | awk '/Connected: Yes/{print 1}')
+CONNECTED=$(grep -A10 "${MAC_ADDRESS}" <<< "${SYSTEM_PROFILER}" | awk '/Services:/{print 1}')
 
 if [[ "${CONNECTED}" ]]; then
   CASE_BATTERY_LEVEL=$(grep -A6 "${MAC_ADDRESS}" <<< "${SYSTEM_PROFILER}" | awk '/Case Battery Level/{print $4}')
